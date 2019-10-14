@@ -35,7 +35,7 @@ func solve(n int, m int, arr [][]int) {
 					for k := range dx {
 						newX := cur.x + dx[k]
 						newY := cur.y + dy[k]
-						if newX >= 0 && newX < m && newY >= 0 && newY < n && !visited[newY][newX] && arr[newY][newX] == 1 {
+						if isValid(newX, newY, n, m) && !visited[newY][newX] && arr[newY][newX] == 1 {
 							queue = append(queue, cell{newY, newX})
 						}
 					}
@@ -60,6 +60,10 @@ func dequeue(q *[]cell) cell {
 	c := (*q)[0]
 	(*q) = (*q)[1:]
 	return c
+}
+
+func isValid(newX int, newY int, n int, m int) bool {
+	return newX >= 0 && newX < m && newY >= 0 && newY < n
 }
 
 func main() {

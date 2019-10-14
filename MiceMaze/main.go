@@ -1,16 +1,16 @@
-//https://www.spoj.com/SSCMTA/problems/MICEMAZE/
+//https://www.spoj.com/problems/MICEMAZE/
 package main
 
 import (
 	"bufio"
 	"container/heap"
 	"fmt"
-	"math"
 	"os"
 )
 
 var (
 	maze [][]int
+	inf  = int(2e9)
 )
 
 type node struct {
@@ -43,7 +43,7 @@ func solve(exit int, timer int, n int) int {
 	heap.Init(h)
 
 	for i := range time {
-		time[i] = math.MaxInt32
+		time[i] = inf
 	}
 	time[exit] = 0
 
